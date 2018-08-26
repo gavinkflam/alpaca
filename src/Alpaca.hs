@@ -1,6 +1,10 @@
-module Alpaca 
-  ( hello
+{-# LANGUAGE OverloadedStrings #-}
+
+module Alpaca
+  ( helloView
   ) where
 
-hello :: [Char] -> [Char]
-hello s = "hello " ++ s
+import Data.Text.Lazy (Text)
+
+helloView :: Text -> Text
+helloView s = "<h1>hello " <> s <> "</h1>"
