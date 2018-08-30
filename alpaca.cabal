@@ -17,6 +17,7 @@ library
   exposed-modules:     Alpaca.Data.Article
                        Alpaca.Data.Section
                        Alpaca.View.Article
+                       Alpaca.View.Section
                        Alpaca.View.Layout
   build-depends:       base >= 4.11 && < 4.12
                      , blaze-html >= 0.9 && < 0.10
