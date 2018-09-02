@@ -16,6 +16,7 @@ cabal-version:         >=1.10
 library
   exposed-modules:     Alpaca.Data.Article
                        Alpaca.Data.Section
+                       Alpaca.Utils.Article
                        Alpaca.Utils.Time
                        Alpaca.View.Article
                        Alpaca.View.Section
@@ -25,6 +26,7 @@ library
                      , lens >= 4.16 && < 4.17
                      , text
                      , time
+                     , unordered-containers
   hs-source-dirs:      src
   default-language:    Haskell2010
 
