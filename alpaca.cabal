@@ -16,6 +16,7 @@ cabal-version:         >=1.10
 library
   exposed-modules:     Alpaca.Data.Article
                        Alpaca.Data.Section
+                       Alpaca.Data.Site
                        Alpaca.Utils.Article
                        Alpaca.Utils.Time
                        Alpaca.View.Article
