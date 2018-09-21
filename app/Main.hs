@@ -6,6 +6,7 @@ import Alpaca.Data.Site (articles)
 import Alpaca.View.Article (renderArticle, renderArticleList)
 import Alpaca.Utils.Article (articleHashMap)
 import AlpacaExe.Data.Site (site)
+import AlpacaExe.Route (articleRoutePattern)
 import Control.Lens ((^.))
 import Data.HashMap.Strict ((!))
 import Text.Blaze.Html (Html)
@@ -19,7 +20,7 @@ main = scotty 3000 $ do
   get "/articles" $
     renderHtml $ renderArticleList $ site ^. articles
 
-  get "/articles/:fullSlug" $ do
+  get articleRoutePattern $ do
     fullSlug <- param "fullSlug" `rescue` (\_ -> return "not-found")
     renderHtml $ renderArticle $ am ! fullSlug
 
