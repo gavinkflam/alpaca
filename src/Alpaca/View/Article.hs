@@ -18,12 +18,18 @@ renderArticle :: Article -> Html
 renderArticle article = docTypeHtml $
   renderWithLayout (article ^. title) $ section $ do
     h1 $ toHtml $ article ^. title
-    time $ toHtml $ showGregorian $ article ^. datePublished
+    renderArticlePublishedDate article
     renderSections $ article ^. sections
 
 renderArticleList :: [Article] -> Html
 renderArticleList articles = docTypeHtml $
   renderWithLayout "Articles" $ toHtml $ map renderArticleListItem articles
 
+renderArticlePublishedDate :: Article -> Html
+renderArticlePublishedDate article = time $ toHtml $
+  showGregorian $ article ^. datePublished
+
 renderArticleListItem :: Article -> Html
-renderArticleListItem article = H.article $ h1 $ toHtml $ article ^. title
+renderArticleListItem article = H.article $ do
+  h1 $ toHtml $ article ^. title
+  renderArticlePublishedDate article
