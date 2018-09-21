@@ -3,7 +3,7 @@
 module Main where
 
 import Alpaca.Data.Site (articles)
-import Alpaca.View.Article (renderArticle)
+import Alpaca.View.Article (renderArticle, renderArticleList)
 import Alpaca.Utils.Article (articleHashMap)
 import AlpacaExe.Data.Site (site)
 import Control.Lens ((^.))
@@ -15,6 +15,9 @@ import Web.Scotty
 main :: IO ()
 main = scotty 3000 $ do
   let am = articleHashMap $ site ^. articles
+
+  get "/articles" $
+    renderHtml $ renderArticleList $ site ^. articles
 
   get "/articles/:fullSlug" $ do
     fullSlug <- param "fullSlug" `rescue` (\_ -> return "not-found")
